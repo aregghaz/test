@@ -1,0 +1,32 @@
+doctype html
+html
+    head
+        title= title
+        link(rel='stylesheet', href='/stylesheets/custom.css')
+    form(action="/auth/auth-login" method="post")
+        .imgcontainer
+
+        .container
+            label(for='email')
+                b Введите адрес электронной почты
+            input(type='text' class=(auth ? 'is-invalid' : '') value=(auth ? email : '') placeholder='Введите адрес электронной почты' id='email' name='email' )
+            label(for='password')
+                b Введите пароль
+            input(type='password' class=(auth ? 'is-invalid' : '') placeholder='Введите пароль' name='password' id='password' )
+            button(type='submit') Вход
+        .container(style='background-color:#f1f1f1')
+            span.psw
+                | Забыл
+                a(href='/recovery')  пароль?
+                |  Или еще нет аккаунта?
+                a(href='/registration') Регистрация
+script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js")
+script.
+    var error2 = !{errors};
+    for (let [key, value]  of Object.values(error2)) {
+        $('label[for="' + key + '"]').html(error2.message)
+    }
+    let propertyNames = Object.keys(error2);
+    $('label[for="' + propertyNames[0] + '"]').html(error2[propertyNames[0]])
+    $('label[for="' + propertyNames[0] + '"]').attr('style','color:red')
+

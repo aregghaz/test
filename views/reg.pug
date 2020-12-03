@@ -1,0 +1,41 @@
+doctype html
+html
+    head
+        title= title
+    link(rel='stylesheet', href='/stylesheets/custom.css')
+    body
+
+    form(action='/auth/add-user' method='post')
+        .imgcontainer
+
+        .container
+
+            label(for='email')
+                b Введите адрес электронной почты
+            input(type='text' placeholder='Введите адрес электронной почты' id='email' name='email' value=email?email:'')
+            label(for='name')
+                b Ваша фамилия, имя
+            input(type='text' placeholder='Ваша фамилия, имя' name='name' id='name' value=name ? name : '')
+            label(for='phone')
+                b Введите номер телефона
+            input(type='number' placeholder='Введите номер телефона' name='phone' id='phone' value=phone ? phone : '')
+            label(for='password')
+                b Введите пароль
+            input(type='password' placeholder='Введите пароль' name='password' id='password')
+            label(for='confirm_password')
+                b Подтвердить Пароль
+            input(type='password' placeholder='Подтвердить Пароль' name='confirm_password' id='confirm_password' )
+            button(type='submit') Зарегистрироватся
+        .container(style='background-color:#f1f1f1')
+
+            span.psw
+                | Ест
+                a(href='/')  акаунт!
+script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js")
+script.
+    var error2 = !{error};
+    for (var i = 0; i < error2.length; i++) {
+        $('#' + error2[i].param).addClass('is-invalid')
+        $('label[for="' + error2[i].param + '"]').html(error2[i].msg)
+        $('label[for="' + error2[i].param + '"]').attr('style', 'color:red')
+    }

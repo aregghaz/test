@@ -1,0 +1,26 @@
+doctype html
+html
+   head
+      title= title
+   link(rel='stylesheet', href='/stylesheets/custom.css')
+   body
+
+   form(action='/auth/check-code' method='post')
+      .container
+         label(for='code')
+            b Введите код из смс
+         input(type='number' class='text' placeholder='Введите код из смс' id='code' name='code' )
+         span
+            | код - #{code}
+         button(type='submit') Вход
+
+
+script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js")
+script.
+   var error2 = !{error};
+   for (var i = 0; i < error2.length; i++) {
+      $('#' + error2[i].param).addClass('is-invalid')
+      $('label[for="' + error2[i].param + '"]').html(error2[i].msg)
+      $('label[for="' + error2[i].param + '"]').attr('style', 'color:red')
+   }
+

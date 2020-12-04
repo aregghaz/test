@@ -88,7 +88,7 @@ router.post("/add-user", [
             .isEmail()
             .withMessage('Введите правильный формат электронной почты')
             .custom((value) => {
-                return checkUserName(value).then((response) => {
+                return checkEmail(value).then((response) => {
                     if (response.length > 0) {
                         return Promise.reject("Электронная почта уже существует");
                     }
@@ -128,8 +128,8 @@ router.post("/add-user", [
     }
 );
 
-function checkUserName(value) {
-
+/// checking User
+function checkEmail(value) {
     return Users.find({
         email: value,
     });
@@ -195,6 +195,10 @@ router.post('/password-check-code', [
         })
 
     });
+/// generate random 6 digit number
+function random(min, max) {
+    return min + Math.random() * (max - min);
+}
 router.post('/recovery-password', [
         check("phone", "Поле телефона должно содержать более 9 символов.")
             .custom((value) => {
@@ -212,7 +216,9 @@ router.post('/recovery-password', [
         if (!errors.isEmpty()) {
             return res.render('recovery', {'error': JSON.stringify(errors.array())})
         }
-        var randomNumber = Math.floor(Math.random() * 100000);
+        var randomNumber = random(100000, 900000).toFixed(0);
+
+
         Users.findOneAndUpdate({
             phone: req.body.phone
         }, {verified: 0, code: randomNumber}).then(response => {
@@ -224,7 +230,7 @@ router.post('/recovery-password', [
             });
         })
     });
-
+// checking phone number
 function checkPhone(value) {
 
     return Users.findOne({
@@ -232,8 +238,8 @@ function checkPhone(value) {
     });
 }
 
+///checking code
 function checkCode(value) {
-
     return Users.findOne({
         code: value,
     });

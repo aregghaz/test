@@ -215,13 +215,11 @@ router.post('/recovery-password', [
             return res.render('recovery', {'error': JSON.stringify(errors.array())})
         }
         var randomNumber = random(100000, 900000).toFixed(0);
-
-
         Users.findOneAndUpdate({
             phone: req.body.phone
         }, {verified: 0, code: randomNumber}).then(response => {
-            req.session.email = response.email
-            req.session.code = randomNumber
+            req.session.email = response.email;
+            req.session.code = randomNumber;
             res.render('recovery-password', {
                 title: 'Enter code | test project',
                 code: req.session.code,

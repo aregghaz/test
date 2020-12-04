@@ -31,6 +31,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="javascript.nodejs.core.library.configured.version" value="12.14.0" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -67,7 +68,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1606980684082</updated>
-      <workItem from="1606980692132" duration="37287000" />
+      <workItem from="1606980692132" duration="37489000" />
     </task>
     <servers />
   </component>

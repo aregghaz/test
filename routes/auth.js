@@ -4,29 +4,20 @@ const bcrypt = require('bcryptjs');
 const passport = require('passport');
 const Users = require('../models/users.js');
 const {check, validationResult, body} = require("express-validator");
-var fs = require("fs");
 const saltRounds = 10;
-
-// Load User model
-//const models = require('./../models');
-
 const {response} = require('express');
 
-
 router.use(function (req, res, next) {
-
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
 });
-
 
 router.post('/auth-login', function (req, res, next) {
     passport.authenticate('local', function (err, user, info) {
         if (err) {
             return next(err);
         }
-        console.log(info)
         if (!user) {
             return res.render('auth', {
                 auth: true,
@@ -69,7 +60,6 @@ router.post("/add-user", [
             min: 9,
         }).custom((value) => {
             return checkPhone(value).then((response) => {
-                console.log(response)
                 if (response) {
                     return Promise.reject("телефон уже существует");
                 }
@@ -99,7 +89,6 @@ router.post("/add-user", [
     (req, res) => {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
-            console.log(errors.array())
             return res.render('reg', {
                 'error': JSON.stringify(errors.array()),
                 email: req.body.email,
@@ -108,8 +97,7 @@ router.post("/add-user", [
             })
         }
 
-        /// generate code for mobile
-        var randomNumber = Math.floor(Math.random() * 100000);
+        var randomNumber = random(100000, 900000).toFixed(0);
         bcrypt.hash(req.body.password, saltRounds, function (err, hash) {
             var data = {};
             data = {
@@ -120,9 +108,18 @@ router.post("/add-user", [
                 code: randomNumber
             };
             Users.create(data).then((response) => {
-                req.session.email = req.body.email
-                req.session.code = randomNumber
-                res.render('code', {code: randomNumber})
+                ///
+                //
+                //
+                //
+                //
+                //
+                //
+                // part for send email and sms
+
+                req.session.email = req.body.email;
+                req.session.code = randomNumber;
+                res.render('code', {code: randomNumber});
             });
         });
     }
@@ -195,15 +192,16 @@ router.post('/password-check-code', [
         })
 
     });
+
 /// generate random 6 digit number
 function random(min, max) {
     return min + Math.random() * (max - min);
 }
+
 router.post('/recovery-password', [
         check("phone", "Поле телефона должно содержать более 9 символов.")
             .custom((value) => {
                 return checkPhone(value).then((response) => {
-                    console.log(!response)
                     if (!response) {
                         return Promise.reject("Номер телефона не существует");
                     }
@@ -230,6 +228,7 @@ router.post('/recovery-password', [
             });
         })
     });
+
 // checking phone number
 function checkPhone(value) {
 

@@ -3,6 +3,9 @@ html
     head
         title= title
         link(rel='stylesheet', href='/stylesheets/custom.css')
+        body
+            a.login(href='/') Логин
+            a(href='registration') Зарегистрироватся
     form(action="/auth/auth-login" method="post")
         .imgcontainer
 

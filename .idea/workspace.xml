@@ -3,7 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="42c986ef-82a3-4278-8e87-900d11e05b1b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/middleware/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/middleware/auth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/users.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/stylesheets/custom.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/stylesheets/custom.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/auth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/users.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/index.pug" beforeDir="false" afterPath="$PROJECT_DIR$/views/index.pug" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/recovery-password.pug" beforeDir="false" afterPath="$PROJECT_DIR$/views/recovery-password.pug" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,7 +75,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1606980684082</updated>
-      <workItem from="1606980692132" duration="37489000" />
+      <workItem from="1606980692132" duration="38645000" />
     </task>
     <servers />
   </component>
@@ -84,17 +91,18 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="276" key="FileChooserDialogImpl/1920.0.1920.1040/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1606980748918" />
-    <state x="656" y="252" width="607" height="536" key="find.popup" timestamp="1607002012072">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="2576" y="252" width="607" height="536" key="find.popup" timestamp="1607066835611">
+      <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="656" y="252" width="607" height="536" key="find.popup/1920.0.1920.1040/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1607002012072" />
+    <state x="2576" y="252" width="607" height="536" key="find.popup/1920.0.1920.1040/-1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1607066835611" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/routes/index.js</url>
-          <line>18</line>
+          <line>10</line>
           <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="2" />
         </line-breakpoint>

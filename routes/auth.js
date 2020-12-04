@@ -140,7 +140,7 @@ router.post('/check-code', [
             return checkCode(value).then((response) => {
 
                 if (!response) {
-                    return Promise.reject("не прашилний код ");
+                    return Promise.reject("Неправильный код ");
                 }
             });
         })

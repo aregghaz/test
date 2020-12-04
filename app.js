@@ -1,7 +1,6 @@
 var createError = require('http-errors');
 var express = require('express');
 var session = require('express-session');
-
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
@@ -11,7 +10,9 @@ var usersRouter = require('./routes/users');
 var auth_routes = require('./routes/auth');
 var app = express();
 var passport = require('passport');
+
 require('./middleware/passport')(passport);
+
 app.use(
     session({
         secret: 'secret',
@@ -23,19 +24,17 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
-
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
-
 const { ensureAuthenticated, forwardAuthenticated } = require('./middleware/auth');
+
+
 app.use('/auth', auth_routes);
 app.use('/', indexRouter);
 app.use('/', ensureAuthenticated, usersRouter);
@@ -44,7 +43,6 @@ app.use('/', ensureAuthenticated, usersRouter);
 app.use(function(req, res, next) {
   next(createError(404));
 });
-
 
 // Connection URL
 const url = 'mongodb://localhost:27017/project1';
@@ -57,8 +55,6 @@ mongoose.connect(url, { useNewUrlParser: true })
       console.log('database connected!');
     })
     .catch(err => console.log(err));
-
-
 
 // error handler
 app.use(function(err, req, res, next) {
